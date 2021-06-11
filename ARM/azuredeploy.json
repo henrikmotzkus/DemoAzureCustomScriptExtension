@@ -69,7 +69,7 @@
     "variables": {
       "vmName":"testvm",
       "nicName": "Nic1",
-      "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
+      "subnetRef": "[resourceId('network','Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
     },
     "resources": [
       
@@ -163,7 +163,7 @@
                 "fileUris": [
                 "https://raw.githubusercontent.com/henrikmotzkus/DemoAzureCustomScriptExtension/main/Extensions/JoinDomain.ps1"
                 ],
-                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File JoinDomain.ps1 adminlocal Password123! test.lab"
+                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File JoinDomain.ps1 -DomainAdminUsername test\\adminlocal -DomainAdminPassword Password123! -DomainToJoin test.lab"
             }
         }
         }
